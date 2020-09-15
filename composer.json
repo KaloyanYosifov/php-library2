@@ -3,7 +3,7 @@
   "type": "library",
   "description": "Urban Airship PHP Library",
   "homepage": "http://docs.urbanairship.com/reference/libraries/php/",
-  "license": "Apache",
+  "license": "Apache License 2.0",
   "authors": [
     {
       "name": "Urban Airship",
