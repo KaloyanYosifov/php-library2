@@ -14,20 +14,20 @@ class TestScheduledPushRequest extends PHPUnit_Framework_TestCase
     {
         $response = new StdClass();
         $response->code = 201;
-        $response->raw_headers = array();
+        $response->raw_headers = [];
         $response->raw_body = "{\"schedule_urls\": [\"https://go.urbanairship.com/api/schedules/41742a47-bd36-4a0e-8ce2-866cd8f3b1b5\"]}";
 
-        $airship = $this->getMock('Airship', array('request', 'buildUrl'));
+        $airship = $this->createMock('UrbanAirship\Airship', ['request', 'buildUrl']);
         $airship->expects($this->any())
-             ->method('request')
-             ->will($this->returnValue($response));
+            ->method('request')
+            ->will($this->returnValue($response));
 
         $push = new P\PushRequest($airship);
         $push = $push
             ->setAudience(P\all)
             ->setNotification(P\notification("Hello"))
             ->setDeviceTypes(P\all)
-            ->setOptions(array());
+            ->setOptions([]);
         $sched = new P\ScheduledPushRequest($airship);
         $sched = $sched
             ->setName("A schedule")
